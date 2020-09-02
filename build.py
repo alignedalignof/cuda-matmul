@@ -23,14 +23,14 @@ def clear_dir(dir):
         pass
     os.mkdir(dir)
 
-def buil_bin():
+def build_bin():
     cpp = glob.glob(f"{SRC}/*.cpp")
     run_cmd(f'g++ -g3 -O3 "-I{CUDA_INC}" "-L{CUDA_LIB}" {" ".join(cpp)} -o {DIST}/{BIN} -lcuda -lcublas')
 
-def buil_cuda():
+def build_cuda():
     run_cmd(f"nvcc --ptx  --generate-line-info --source-in-ptx --output-file {DIST}/{KERNEL}.ptx {SRC}/{KERNEL}.cu")
     
 if __name__ == "__main__":
     clear_dir(DIST)
-    buil_bin()
-    buil_cuda()
+    build_bin()
+    build_cuda()
