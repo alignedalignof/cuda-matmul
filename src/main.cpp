@@ -37,7 +37,7 @@ static void test(const CudaMat& a, const CudaMat& b, const CudaMat& e, MatMulMet
 }
 
 int main() {
-	const int N = 1000;
+	const int N = 3073;
 
 	mt19937 gen(42);
 	uniform_real_distribution<float> uni(-1.0, 1.0);

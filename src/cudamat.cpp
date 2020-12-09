@@ -101,6 +101,8 @@ static void cudamat_gpu_multiply(void* a, void* b, void* c, int rows, int cols, 
 	int bpgx = ROUND_UP(cols, tpbx)/tpbx;
 	int bpgy = ROUND_UP(rows, tpby)/tpby;
 	if (it->second.name == "MatMulLayer") {
+		tpbx = 32;
+		tpby = 8;
 		bpgx = ROUND_UP(cols, 128)/128;
 		bpgy = ROUND_UP(rows, 128)/128;
 	}
